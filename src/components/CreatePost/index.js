@@ -54,12 +54,9 @@ class CreatePost extends Component {
   };
 
   deselectImage = e => {
-    e.stopPropagation();
-    console.log(e.target.dataset.target);
+    let target = e.target.dataset.target;
     this.setState(prevState => ({
-      accepted: prevState.accepted.filter(
-        (file, index) => index !== e.target.dataset.target
-      )
+      accepted: prevState.accepted.filter((file, index) => index !== target)
     }));
   };
 
