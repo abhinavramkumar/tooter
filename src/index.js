@@ -10,6 +10,12 @@ injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
   @import url('https://fonts.googleapis.com/css?family=PT+Serif:400,700');
 
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
   html {
     font-size: 16px;
   }

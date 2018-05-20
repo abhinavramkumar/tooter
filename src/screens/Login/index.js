@@ -13,6 +13,10 @@ import IconLogin from "./assets/login.svg";
 class Login extends Component {
   state = {};
 
+  componentDidMount() {
+    console.log("Login Loaded!!");
+  }
+
   render() {
     return (
       <Wrapper>

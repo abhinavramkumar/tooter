@@ -1,3 +1,6 @@
 import Header from "./Header";
+import AccountForm from "./AccountForm";
+import PostEditor from "./PostEditor";
+import CreatePost from "./CreatePost";
 
-export { Header };
+export { AccountForm, CreatePost, Header, PostEditor };
