@@ -3,8 +3,9 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   width: 100%;
   margin: 0;
-  padding: 0;
+  padding: 1rem 0;
   height: calc(100vh - 40px);
+  background: #e6ecf0;
 `;
 
 export const Container = styled.div`
@@ -12,22 +13,23 @@ export const Container = styled.div`
   height: 100%;
   margin: 0 auto;
   padding: 0;
-`;
-
-export const CenteredColumn = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+`;
+
+export const HomeSidebar = styled.div`
+  flex-basis: calc(25% - 0.66rem);
+  margin-right: 0.5rem;
+  border: 1px solid white;
+  height: 200px;
+`;
+
+export const PostsContainer = styled.div`
+  flex-basis: calc(50% - 0.66rem);
+  margin: 0 0.5rem;
+`;
+
+export const PostsWrapper = styled.div`
   height: 100%;
-`;
-
-export const Welcome = styled.h1`
-  color: ${props => props.theme.colors.greyDark};
-`;
-
-export const Image = styled.img`
-  width: 175px;
-  height: 175px;
 `;

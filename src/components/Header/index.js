@@ -9,7 +9,7 @@ class Header extends Component {
       <Wrapper>
         <Container>
           <Row>
-            <Brand>React Boilerplate</Brand>
+            <Brand>Tooter</Brand>
             <Links>
               <StyledLink to="/">Home</StyledLink>
               <StyledLink to="/u/123">User 123</StyledLink>

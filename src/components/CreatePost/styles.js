@@ -2,13 +2,17 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 100%;
-  min-height: 150px;
-  max-height: 100%;
+  height: 64px;
   display: block;
   background-color: hsla(220, 61%, 88%, 1);
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.125);
   margin-bottom: 1rem;
+  transition: all 300ms ease-in;
+  &.expanded {
+    min-height: 150px;
+    max-height: 100%;
+  }
 `;
 
 export const Content = styled.div`
@@ -17,9 +21,15 @@ export const Content = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
-  padding: 1rem 1rem 0 1rem;
+  padding: 1rem;
+  transition: all 300ms ease-in;
+  &.expanded {
+    padding: 1rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 `;
 
 export const Image = styled.img`
@@ -33,11 +43,32 @@ export const TextWrapper = styled.div`
   box-sizing: border-box;
   display: block;
   flex-basis: calc(100% - calc(2rem + 150px));
-  min-height: calc(150px - 2rem);
+  height: 36px;
   margin: 0 8px;
   border-radius: 12px;
   position: relative;
-  overflow: shown;
+  overflow: visible;
+  transition: all 300ms ease-in;
+  textarea {
+    height: 36px;
+    transition: all 300ms ease-in;
+  }
+  button {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 300ms ease-in;
+  }
+  &.expanded {
+    height: calc(150px - 2rem);
+    max-height: 100%;
+    textarea {
+      height: 100%;
+    }
+    button {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
 `;
 
 export const Text = styled.textarea`
@@ -65,10 +96,14 @@ export const Meta = styled.div`
   justify-content: flex-end;
   box-sizing: border-box;
   flex-basis: 100px;
-  align-self: stretch;
-  align-self: flex-end;
+  align-self: center;
   margin-left: 8px;
   height: 100%;
+  transition: all 300ms ease-in;
+  &.expanded {
+    align-self: stretch;
+    align-self: flex-end;
+  }
 `;
 
 export const SelectImage = styled.button`
@@ -97,12 +132,26 @@ export const ImageCount = styled.p`
   margin-bottom: 8px;
   color: #666;
   text-align: center;
+  transform: translateY(5px) scale(0);
+  opacity: 0;
+  transition: all 300ms ease-in;
+  &.expanded {
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+  }
 `;
 
 export const WordCount = styled.p`
   font-size: 14px;
   margin-bottom: 8px;
   color: #666;
+  transform: translateY(5px) scale(0);
+  opacity: 0;
+  transition: all 300ms ease-in;
+  &.expanded {
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+  }
 `;
 
 export const Button = styled.button`
@@ -118,11 +167,16 @@ export const Button = styled.button`
   justify-content: center;
   box-sizing: border-box;
   cursor: pointer;
+  margin-top: -5rem;
+  transition: margin-top 300ms ease-in;
   svg {
     margin: 0;
     margin-left: 8px;
     stroke: white;
     fill: white;
+  }
+  &.expanded {
+    margin-top: 0;
   }
 `;
 

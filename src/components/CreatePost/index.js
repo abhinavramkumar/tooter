@@ -29,6 +29,7 @@ class CreatePost extends Component {
   state = {
     tweetBody: "",
     showDropzone: false,
+    isExpanded: false,
     accepted: [],
     rejected: []
   };
@@ -66,30 +67,49 @@ class CreatePost extends Component {
 
   onDropzoneChange = e => {};
 
+  onTextareaFocus = e => {
+    this.setState(prevState => ({ isExpanded: true }));
+  };
+
+  onTextareaBlur = e => {
+    this.setState(prevState => ({ isExpanded: false }));
+  };
+
   render() {
     return (
-      <Wrapper>
-        <Content>
+      <Wrapper className={this.state.isExpanded ? "expanded" : ""}>
+        <Content className={this.state.isExpanded ? "expanded" : ""}>
           <Image src="https://www.fillmurray.com/100/100" alt="Test" />
-          <TextWrapper>
+          <TextWrapper className={this.state.isExpanded ? "expanded" : ""}>
             <Text
               rows="6"
               columns="30"
               value={this.state.tweetBody}
               onChange={this.onTweetChange}
+              onFocus={this.onTextareaFocus}
+              onBlur={this.onTextareaBlur}
             />
             <SelectImage onClick={this.onToggleDropzone}>
               <Icon icon={faImage} size="lg" />
             </SelectImage>
           </TextWrapper>
-          <Meta>
+          <Meta className={this.state.isExpanded ? "expanded" : ""}>
             {this.state.accepted.length > 0 ? (
-              <ImageCount>{this.state.accepted.length} images</ImageCount>
+              <ImageCount className={this.state.isExpanded ? "expanded" : ""}>
+                {this.state.accepted.length} images
+              </ImageCount>
             ) : (
-              <ImageCount>No images selected!</ImageCount>
+              <ImageCount className={this.state.isExpanded ? "expanded" : ""}>
+                No images selected!
+              </ImageCount>
             )}
-            <WordCount>{this.state.tweetBody.length} / 240</WordCount>
-            <Button onClick={this.onPostTweet}>
+            <WordCount className={this.state.isExpanded ? "expanded" : ""}>
+              {this.state.tweetBody.length} / 240
+            </WordCount>
+            <Button
+              className={this.state.isExpanded ? "expanded" : ""}
+              onClick={this.onPostTweet}
+            >
               Post
               <Icon icon={faPaperPlane} />
             </Button>
