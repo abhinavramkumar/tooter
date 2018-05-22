@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import Icon from "@fortawesome/react-fontawesome";
 import Dropzone from "react-dropzone";
-import { faPaperPlane, faImage } from "@fortawesome/fontawesome-free-solid";
+import {
+  faPaperPlane,
+  faImage,
+  faTimes
+} from "@fortawesome/fontawesome-free-solid";
 import {
   Wrapper,
   Content,
   Image,
+  ImageCount,
   TextWrapper,
   Text,
   Meta,
@@ -14,8 +19,6 @@ import {
   Button,
   DropzoneWrapper,
   Placeholder,
-  FileItem,
-  FilesList,
   PreviewImage,
   PreviewList,
   PreviewWrapper,
@@ -35,7 +38,8 @@ class CreatePost extends Component {
     const { value } = e.currentTarget;
     if (value.length <= 240) {
       this.setState(prevState => ({
-        tweetBody: value
+        tweetBody: value,
+        showDropzone: false
       }));
     }
   };
@@ -47,20 +51,21 @@ class CreatePost extends Component {
   };
 
   onFileDrop = (accepted, rejected) => {
-    console.log(accepted);
     this.setState(prevState => ({
       accepted: [...prevState.accepted, ...accepted]
     }));
   };
 
   deselectImage = e => {
-    let target = e.target.dataset.target;
+    let target = e.currentTarget.dataset.target;
+    console.log(target);
     this.setState(prevState => ({
-      accepted: prevState.accepted.filter((file, index) => index !== target)
+      accepted: prevState.accepted.filter(file => file.name !== target)
     }));
   };
 
   onDropzoneChange = e => {};
+
   render() {
     return (
       <Wrapper>
@@ -78,6 +83,11 @@ class CreatePost extends Component {
             </SelectImage>
           </TextWrapper>
           <Meta>
+            {this.state.accepted.length > 0 ? (
+              <ImageCount>{this.state.accepted.length} images</ImageCount>
+            ) : (
+              <ImageCount>No images selected!</ImageCount>
+            )}
             <WordCount>{this.state.tweetBody.length} / 240</WordCount>
             <Button onClick={this.onPostTweet}>
               Post
@@ -112,8 +122,8 @@ class CreatePost extends Component {
                   {file.name}{" "}
                   <span>{`${(file.size / (1024 * 1024)).toFixed(2)} MB`}</span>
                 </PreviewCaption>
-                <button onClick={this.deselectImage} data-target={index}>
-                  Remove
+                <button onClick={this.deselectImage} data-target={file.name}>
+                  <Icon icon={faTimes} />
                 </button>
               </PreviewWrapper>
             ))}

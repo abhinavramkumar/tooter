@@ -1,19 +1,23 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  background-color: #e6ecf0;
+  min-height: calc(100vh - 40px);
+`;
 
-export const Container = styled.div``;
+export const PostsContainer = styled.div`
+  flex-basis: calc(60% - 0.66rem);
+  height: 100%;
+  margin: 0 0.5rem;
+`;
 
-export const ProfileData = styled.div``;
+export const Main = styled.div`
+  padding: 30px 0;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+`;
 
-export const Image = styled.img``;
-
-export const UserData = styled.div``;
-
-export const Row = styled.div``;
-
-export const Stat = styled.div``;
-
-export const Title = styled.div``;
-
-export const Main = styled.div``;
+export const PostsWrapper = styled.div``;

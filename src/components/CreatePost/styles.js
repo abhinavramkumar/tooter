@@ -5,10 +5,10 @@ export const Wrapper = styled.div`
   min-height: 150px;
   max-height: 100%;
   display: block;
-  border: 1px solid none;
   background-color: hsla(220, 61%, 88%, 1);
-  border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.125);
+  margin-bottom: 1rem;
 `;
 
 export const Content = styled.div`
@@ -35,22 +35,27 @@ export const TextWrapper = styled.div`
   flex-basis: calc(100% - calc(2rem + 150px));
   min-height: calc(150px - 2rem);
   margin: 0 8px;
-  overflow: hidden;
   border-radius: 12px;
-  border: 1px solid yellow;
   position: relative;
+  overflow: shown;
 `;
 
 export const Text = styled.textarea`
   display: block;
+  max-width: 100%;
+  min-width: 100%;
   border-radius: 12px;
-  border: none;
+  border: 2px solid transparent;
   box-sizing: border-box;
-  width: 100%;
   min-height: inherit;
   padding: 8px;
   font-size: 14px;
   color: #999;
+  &:focus {
+    outline: none;
+    border: 2px solid #1da1f2;
+    outline-offset: 0px;
+  }
 `;
 
 export const Meta = styled.div`
@@ -87,14 +92,23 @@ export const SelectImage = styled.button`
   }
 `;
 
+export const ImageCount = styled.p`
+  font-size: 12px;
+  margin-bottom: 8px;
+  color: #666;
+  text-align: center;
+`;
+
 export const WordCount = styled.p`
   font-size: 14px;
+  margin-bottom: 8px;
+  color: #666;
 `;
 
 export const Button = styled.button`
   width: 100%;
-  background: hsla(230, 80%, 60%, 1);
-  border: 1px solid hsla(230, 80%, 60%, 1);
+  background: #1da1f2;
+  border: 1px solid #1da1f2;
   border-radius: 12px;
   color: white;
   font-size: 15px;
@@ -166,36 +180,17 @@ export const Placeholder = styled.div`
   }
 `;
 
-export const FilesList = styled.div`
-  padding: 0 1rem;
-  margin-top: 1rem;
-  height: 0px;
-  border: 1px solid #000;
-  transition: all 300ms ease-in;
-  box-sizing: border-box;
-  &.active {
-    padding: 1rem;
-    height: 100%;
-  }
-`;
-
-export const FileItem = styled.div`
-  padding: 0.5rem;
-  border: 1px solid red;
-`;
-
 export const PreviewList = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
-  padding: 0 1rem;
+  padding: 0;
   height: 0%;
   border: 0px solid transparent;
   box-sizing: border-box;
   &.active {
     height: 100%;
-    padding: 1rem;
     width: calc(100% - calc(2rem + 150px));
     margin-left: 66px;
   }
@@ -205,21 +200,34 @@ export const PreviewImage = styled.img`
   vertical-align: middle;
   height: 100%;
   width: 100%;
+  border-radius: 12px;
 `;
 
 export const PreviewWrapper = styled.div`
   flex-basis: calc(33.33% - 2rem);
   height: 100%;
   margin: 1rem;
+  position: relative;
+  button {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    padding: 2px 6px;
+    border: 1px solid red;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+  }
 `;
 
 export const PreviewCaption = styled.p`
-  font-size: 15px;
-  font-weight: 300;
+  font-size: 14px;
+  font-weight: 700;
   padding: 8px;
   span {
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 13px;
+    font-weight: 700;
     margin-left: 1rem;
   }
 `;

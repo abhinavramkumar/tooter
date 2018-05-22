@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import IconAi from "./assets/ai.svg";
-import { CreatePost } from "../../components";
 import {
   Wrapper,
   Welcome,
@@ -23,10 +22,7 @@ class Home extends Component {
   render() {
     return (
       <Wrapper>
-        <Container>
-          <h2>create Post component</h2>
-          <CreatePost />
-        </Container>
+        <Container />
       </Wrapper>
     );
   }
